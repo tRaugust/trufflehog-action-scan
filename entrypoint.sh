@@ -3,12 +3,12 @@ set -e # Abort script at first error
 
 args="--regex --entropy=False --max_depth=50" # Default trufflehog options
 
-echo "Hello TR Debugging"
-echo sa
-echo ${INPUT_SCANARGUMENTS}
-echo ght
-echo ${INPUT_GITHUBTOKEN}
-env
+#echo "Hello TR Debugging"
+#echo sa
+#echo ${INPUT_SCANARGUMENTS}
+#echo ght
+#echo ${INPUT_GITHUBTOKEN}
+#env
 
 if [ -n "${INPUT_SCANARGUMENTS}" ]; then
   args="${INPUT_SCANARGUMENTS}" # Overwrite if new options string is provided
@@ -21,4 +21,7 @@ else
 fi
 
 query="$args $githubRepo" # Build args query with repository url
+
+
+echo Running trufflehog $query
 trufflehog $query
