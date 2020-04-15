@@ -23,5 +23,5 @@ fi
 query="$args $githubRepo" # Build args query with repository url
 
 
-echo Running trufflehog $query
-trufflehog $query
+echo Running trufflehog3 $query
+trufflehog3 $query
