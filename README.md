@@ -3,6 +3,8 @@
 
 Scan recent commits in repository for secrets with basic [trufflehog](https://github.com/dxa4481/truffleHog) defaults in place for easy setup.
 
+Now updated to use the **updated** [trufflehog3](https://github.com/feeltheajf/truffleHog3) that is an updated fork of the original [trufflehog](https://github.com/dxa4481/truffleHog) 
+
 This action is intended as a Continuous Integration secret scan in an already "clean" repository. The default commit scan depth is the last 50 commits and can be adjusted using Custom Arguments (see below).
 
 It is recommended to run a basic trufflehog scan on your entire repository prior to relying on this CI solution (Note: this can be done manually from the command line or by using this action with custom options `"--regex --entropy=False"`).
@@ -13,11 +15,11 @@ It is recommended to run a basic trufflehog scan on your entire repository prior
 
 workflow "Detect Secrets" {
   on = "push"
-  resolves = ["edplato/trufflehog-actions-scan"]
+  resolves = ["traugust/trufflehog-actions-scan"]
 }
 
-action "edplato/trufflehog-actions-scan" {
-  uses = "edplato/trufflehog-actions-scan@master"
+action "traugust/trufflehog-actions-scan" {
+  uses = "traugst/trufflehog-actions-scan@master"
 }
 
 ```
@@ -43,7 +45,7 @@ Edit your corresponding actions `yml` file or create a new one.
 steps:
 - uses: actions/checkout@master
 - name: trufflehog-actions-scan
-  uses: edplato/trufflehog-actions-scan@master
+  uses: traugust/trufflehog-actions-scan@master
 ```
 
 ### Custom Arguments
@@ -52,7 +54,7 @@ steps:
 steps:
 - uses: actions/checkout@master
 - name: trufflehog-actions-scan
-  uses: edplato/trufflehog-actions-scan@master
+  uses: traugust/trufflehog-actions-scan@master
   with:
     scanArguments: "--regex --entropy=False --max_depth=5 --rules /regexes.json" # Add custom options here*
 
@@ -70,9 +72,9 @@ You can't use the default `GITHUB_TOKEN` as it doesn't have the permission to cl
 steps:
 - uses: actions/checkout@master
 - name: trufflehog-actions-scan
-  uses: edplato/trufflehog-actions-scan@master
+  uses: traugust/trufflehog-actions-scan@master
   with:
-    githubToken: ${{ secrets.GITHUB_CLONE_TOKEN }} # You have to create an access token manually
+    githubToken: ${{ secrets.GIT_HUB_CLONE_TOKEN }} # You have to create an access token manually and store it into your repo's secrets
 
 ```
 
