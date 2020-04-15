@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -e # Abort script at first error
 
-args="--regex --entropy=False --max_depth=50" # Default trufflehog options
+args="--no-entropy --max_depth=50" # Default trufflehog options
 
 #echo "Hello TR Debugging"
 #echo sa
