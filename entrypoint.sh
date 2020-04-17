@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 set -e # Abort script at first error
-
-args="--no-entropy" # Default trufflehog options
+# todo: this args get overwritten when specified in callig workflow with scanarguments
+args="--no-entropy --output TRufflehog.log --json" # Default trufflehog options
 #args="--no-entropy --max_depth=50" # Default trufflehog options
 
 #echo "Hello TR Debugging"
@@ -26,5 +26,7 @@ query="$args $githubRepo" # Build args query with repository url
 
 echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
-trufflehog3 $query
+issuecount=`trufflehog3 $query`
+echo $issuecount
+
 
