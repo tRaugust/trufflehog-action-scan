@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 set -e # Abort script at first error
 # todo: this args get overwritten when specified in callig workflow with scanarguments
 logfile="TRufflehog.log"
@@ -43,7 +43,7 @@ fillOutput () {
 echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
 echo "OOOhhh"
-#trap 'fillOutput' ERR
+trap 'fillOutput' ERR
 if ! $(trufflehog3 $query); then
   fillOutput
 else
