@@ -2,7 +2,7 @@
 set -e # Abort script at first error
 # todo: this args get overwritten when specified in callig workflow with scanarguments
 logfile="TRufflehog.log"
-args="--no-entropy --output $logfile --json" # Default trufflehog options
+args="--no-entropy --output $logfile" # Default trufflehog options
 #args="--no-entropy --max_depth=50" # Default trufflehog options
 
 #echo "Hello TR Debugging"
@@ -24,18 +24,26 @@ fi
 
 query="$args $githubRepo" # Build args query with repository url
 
-set +e
+
+fillOutput () {
+  issuecount=$?
+  echo "--------"
+  echo "--------"
+  cat $logfile
+  echo "--------"
+  logfileContent=cat $logfile
+  echo "issue count: $issuecount"
+  echo "::set-output name=numWarnings::$issuecount"
+  echo "::set-output name=warningsText::$logfileContent"
+  exit $issuecount
+  echo "IssueCount="
+}
+
+#set +e
+trap 'fillOutput' ERR
 echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
 echo "OOOhhh"
-output=$(trufflehog3 $query)
-issuecount=$?
-echo "--------"
-echo "Output: $output"
-echo "--------"
-cat $logfile
-echo "--------"
-echo "ic: $issuecount"
-exit $issuecount
+$(trufflehog3 $query)
 
 
