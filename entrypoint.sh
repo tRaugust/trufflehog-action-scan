@@ -43,7 +43,7 @@ fillOutput () {
 echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
 echo "OOOhhh"
-trap 'fillOutput' ERR
+#trap 'fillOutput' ERR
 if ! $(trufflehog3 $query); then
   fillOutput
 else
