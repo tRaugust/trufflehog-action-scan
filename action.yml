@@ -11,6 +11,16 @@ inputs:
   scanArguments:
     description: 'Argument options for scan.'
     required: false
+outputs:
+  numWarnings:
+    description: 'the number of warnings, 0 if no warnings were found'
+  warningsMarkdown:
+    description: 'the warnings rendered as Markdown'
+  warningsText:
+    description: 'the warnings rendered as plain text'
+  warningsJSON:
+    description: 'the warnings rendered as JSON'
+
 branding:
   icon: 'shield'  
   color: 'yellow'
