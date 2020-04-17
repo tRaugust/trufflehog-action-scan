@@ -31,7 +31,7 @@ fillOutput () {
   echo "--------"
   cat $logfile
   echo "--------"
-  logfileContent=cat $logfile
+  logfileContent=$(cat $logfile)
   echo "issue count: $issuecount"
   echo "::set-output name=numWarnings::$issuecount"
   echo "::set-output name=warningsText::$logfileContent"
