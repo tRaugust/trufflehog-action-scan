@@ -40,10 +40,14 @@ fillOutput () {
 }
 
 #set +e
-trap 'fillOutput' ERR
 echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
 echo "OOOhhh"
-$(trufflehog3 $query)
+trap 'fillOutput' ERR
+if ! $(trufflehog3 $query); then
+  fillOutput
+else
+  fillOutput
+fi
 
 
