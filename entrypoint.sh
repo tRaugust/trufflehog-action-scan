@@ -28,7 +28,7 @@ set -e
 echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
 echo "OOOhhh"
-output=(trufflehog3 $query)
+output=$(trufflehog3 $query)
 issuecount=$?
 echo "--------"
 echo "Output: $output"
