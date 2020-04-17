@@ -27,7 +27,7 @@ query="$args $githubRepo" # Build args query with repository url
 echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
 echo "OOOhhh"
-(trufflehog3 $query)
+echo $(trufflehog3 $query)
 issuecount=$?
 echo "ahhh"
 echo $issuecount
