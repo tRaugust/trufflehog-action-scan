@@ -31,12 +31,11 @@ fillOutput () {
   echo "--------"
   cat $logfile
   echo "--------"
-  logfileContent=$(cat $logfile)
+  logfileContent=`cat $logfile`
   echo "issue count: $issuecount"
   echo "::set-output name=numWarnings::$issuecount"
   echo "::set-output name=warningsText::$logfileContent"
   exit $issuecount
-  echo "IssueCount="
 }
 
 #set +e
@@ -44,10 +43,12 @@ echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
 echo "OOOhhh"
 trap 'fillOutput' ERR
-if ! $(trufflehog3 $query); then
-  fillOutput
-else
-  fillOutput
-fi
+#if ! $(trufflehog3 $query); then
+#  fillOutput
+#else
+#  fillOutput
+#fi
+$(trufflehog3 $query)
+echo "XX"
 
 
