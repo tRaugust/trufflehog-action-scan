@@ -36,11 +36,12 @@ fillOutput() {
   exit $issuecount > 0
 }
 
-#set +e
+set +e
 echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
 echo "OOOhhh"
-trap 'fillOutput' ERR
+#trap 'fillOutput' ERR
 $(trufflehog3 $query)
 echo "No issues found"
 fillOutput
+
