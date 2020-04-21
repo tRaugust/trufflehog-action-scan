@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 set -e # Abort script at first error
 # todo: this args get overwritten when specified in callig workflow with scanarguments
 logfile="TRufflehog.log"
