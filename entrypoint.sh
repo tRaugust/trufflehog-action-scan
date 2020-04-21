@@ -24,18 +24,16 @@ fi
 
 query="$args $githubRepo" # Build args query with repository url
 
-
-fillOutput () {
-  issuecount=$?
-  echo "--------"
-  echo "--------"
-  cat $logfile
-  echo "--------"
-  logfileContent=`cat $logfile`
+fillOutput() {
+  logfileContent=$(cat $logfile)
+  issuecount=$(jq '. | length' $logfile)
+  issueList=$(jq -r '.[] | "Found issue <\(.reason)> in file <.\(.path)>"' $logfile)
   echo "issue count: $issuecount"
+  echo $issueList
   echo "::set-output name=numWarnings::$issuecount"
-  echo "::set-output name=warningsText::$logfileContent"
-  exit $issuecount
+  echo "::set-output name=warningsText::$issueList"
+  echo "::set-output name=warningsJSON::$logfileContent"
+  exit $issuecount > 0
 }
 
 #set +e
@@ -43,12 +41,6 @@ echo Running trufflehog3 $query
 echo "::set-output name=numWarnings::strawberry"
 echo "OOOhhh"
 trap 'fillOutput' ERR
-#if ! $(trufflehog3 $query); then
-#  fillOutput
-#else
-#  fillOutput
-#fi
 $(trufflehog3 $query)
-echo "XX"
-
-
+echo "No issues found"
+fillOutput
