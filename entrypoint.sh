@@ -30,10 +30,21 @@ fillOutput() {
   issueList=$(jq -r '.[] | "Found issue <\(.reason)> in file <.\(.path)>"' $logfile)
   echo "issue count: $issuecount"
   echo $issueList
+  ## escape issueList multiline string so it cab be passed as single-line output value of github action 
+  ## see https://github.community/t5/GitHub-Actions/set-output-Truncates-Multiline-Strings/td-p/37870
+  issueList="${issueList//'%'/'%25'}"
+  issueList="${issueList//$'\n'/'%0A'}"
+  issueList="${issueList//$'\r'/'%0D'}"
+
+  ## escape logfileContent multiline string so it cab be passed as single-line output value of github action 
+  logfileContent="${logfileContent//'%'/'%25'}"
+  logfileContent="${logfileContent//$'\n'/'%0A'}"
+  logfileContent="${logfileContent//$'\r'/'%0D'}"
+
   echo "::set-output name=numWarnings::$issuecount"
   echo "::set-output name=warningsText::$issueList"
   echo "::set-output name=warningsJSON::$logfileContent"
-  exit $issuecount > 0
+  exit $issuecount >0
 }
 
 #set +e
