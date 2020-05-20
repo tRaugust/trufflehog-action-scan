@@ -26,13 +26,13 @@ jobs:
         if: failure()
         uses: peter-evans/commit-comment@v1
         with:
-          token: ${{ secrets. GIT_HUB_CLONE_TOKEN }}
+          token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            Trufflehog scan found ${{steps.scan_secrets.outputs.numWarnings}} suspicious lines in code.
+            Trufflehog scan found ${{steps.selftest.outputs.numWarnings}} suspicious lines in code.
             These could contain secrets that were committed accidentally.
             Please review the following files :
             ```
-            ${{steps.scan_secrets.outputs.warningsText}}
+            ${{steps.selftest.outputs.warningsText}}
             ```
 
             Review the full trufflehog scan log at TODO
