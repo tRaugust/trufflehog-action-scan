@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 set -e # Abort script at first error
-# todo: this args get overwritten when specified in callig workflow with scanarguments
+# todo: this args get overwritten when specified in calling workflow with scan-arguments
 logfile="TRufflehog.log"
 args="--no-entropy --output $logfile --json" # Default trufflehog options
 #args="--no-entropy --max_depth=50" # Default trufflehog options
@@ -27,6 +27,8 @@ query="$args $githubRepo" # Build args query with repository url
 setOutput(){
   value=$1;
   outputName=$2;
+  echo "1>$value<"
+
   ## escape value multiline string so it cab be passed as single-line output value of github action
   ## see https://github.community/t5/GitHub-Actions/set-output-Truncates-Multiline-Strings/td-p/37870
   value="${value//'%'/'%25'}"
