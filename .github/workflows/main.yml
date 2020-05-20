@@ -30,7 +30,7 @@ jobs:
 #          name: trufflehog-logfile.log
 #          path: TRufflehog.log
       - name: write comment on push
-        if: steps.selftest.outputs.numWarnings > 0
+        if: ${{ steps.selftest.outputs.numWarnings > 0 }}
         uses: peter-evans/commit-comment@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
