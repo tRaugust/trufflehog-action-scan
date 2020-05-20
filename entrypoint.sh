@@ -46,9 +46,9 @@ fillOutput() {
   echo "issue count: $issuecount"
   echo $issueList
 
-  setOutput $issuecount "numWarnings"
-  setOutput $issueList "warningsText"
-  setOutput $logfileContent "warningsJSON"
+  setOutput "$issuecount" "numWarnings"
+  setOutput "$issueList" "warningsText"
+  setOutput "$logfileContent" "warningsJSON"
   exit $issuecount >0
 }
 
