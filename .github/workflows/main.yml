@@ -22,12 +22,12 @@ jobs:
       - name: Self test
         id: selftest
         uses: ./
-      - name: Uploading Logfile
-        uses: actions/upload-artifact@v1
-        if: failure()
-        with:
-          name: trufflehog-logfile.log
-          path: TRufflehog.log
+#      - name: Uploading Logfile
+#        uses: actions/upload-artifact@v1
+#        if: failure()
+#        with:
+#          name: trufflehog-logfile.log
+#          path: TRufflehog.log
       - name: write comment on push
         if: failure()
         uses: peter-evans/commit-comment@v1
@@ -40,8 +40,12 @@ jobs:
             ```
             ${{steps.selftest.outputs.warningsText}}
             ```
+            <details>
+            <summary>Review the full trufflehog scan log:</summary>
 
-            Review the full trufflehog scan log at TODO
+            ${{steps.selftest.outputs.warningsJSON}}
+            </details>
+
       - name: Dump steps context
         if: failure()
         env:
