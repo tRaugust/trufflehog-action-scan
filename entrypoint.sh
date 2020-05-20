@@ -2,7 +2,7 @@
 set -e # Abort script at first error
 # todo: this args get overwritten when specified in calling workflow with scan-arguments
 logfile="TRufflehog.log"
-args="--no-entropy --output $logfile --json" # Default trufflehog options
+args="--no-entropy --output $logfile --f json" # Default trufflehog options
 #args="--no-entropy --max_depth=50" # Default trufflehog options
 
 #echo "Hello TR Debugging"
