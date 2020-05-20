@@ -22,6 +22,11 @@ jobs:
       - name: Self test
         id: selftest
         uses: ./
+      - uses: actions/upload-artifact@v1
+      if: failure()
+        with:
+          name: trufflehog-logfile.log
+          path: TRufflehog.log
       - name: write comment on push
         if: failure()
         uses: peter-evans/commit-comment@v1
