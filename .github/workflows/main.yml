@@ -22,8 +22,9 @@ jobs:
       - name: Self test
         id: selftest
         uses: ./
-      - uses: actions/upload-artifact@v1
-      if: failure()
+      - name: Uploading Logfile
+        uses: actions/upload-artifact@v1
+        if: failure()
         with:
           name: trufflehog-logfile.log
           path: TRufflehog.log
