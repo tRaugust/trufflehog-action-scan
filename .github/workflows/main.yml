@@ -43,7 +43,9 @@ jobs:
             <details>
             <summary>Review the full trufflehog scan log:</summary>
 
+            ```
             ${{steps.selftest.outputs.warningsJSON}}
+            ```
             </details>
 
       - name: Dump steps context
