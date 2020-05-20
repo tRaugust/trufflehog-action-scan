@@ -22,6 +22,7 @@ jobs:
       - name: Self test
         id: selftest
         uses: ./
+        continue-on-error: true
 #      - name: Uploading Logfile
 #        uses: actions/upload-artifact@v1
 #        if: failure()
@@ -29,7 +30,7 @@ jobs:
 #          name: trufflehog-logfile.log
 #          path: TRufflehog.log
       - name: write comment on push
-        if: failure()
+        if: steps.selftest.outputs.numWarnings > 0
         uses: peter-evans/commit-comment@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
