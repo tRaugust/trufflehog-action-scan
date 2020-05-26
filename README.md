@@ -1,5 +1,6 @@
 
 # Trufflehog Actions Scan :pig_nose::key:
+![perform self-test of action](https://github.com/tRaugust/trufflehog-actions-scan/workflows/perform%20self-test%20of%20action/badge.svg)
 
 Scan recent commits in repository for secrets with basic [trufflehog](https://github.com/dxa4481/truffleHog) defaults in place for easy setup.
 
