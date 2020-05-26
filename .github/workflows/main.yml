@@ -22,6 +22,7 @@ jobs:
       - name: Self test
         id: selftest
         uses: ./
+        ##error is expected as the thest scan on this repo will find the patterns in the config file
         continue-on-error: true
 #      - name: Uploading Logfile
 #        uses: actions/upload-artifact@v1
@@ -35,7 +36,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            Trufflehog scan found ${{steps.selftest.outputs.numWarnings}} suspicious lines in code.
+            Trufflehog scan found ${{steps.selftest.outputs.numWarnings}} suspicious lines in code (16 ARE EXPECTED).
             These could contain secrets that were committed accidentally.
             Please review the following files :
             ```
@@ -48,6 +49,9 @@ jobs:
             ${{steps.selftest.outputs.warningsJSON}}
             ```
             </details>
+      - name: fail if amount of matches is unexpected (i.e. != 16)
+        if: ${{ steps.selftest.outputs.numWarnings <> 16 }}
+        run: exit 1
 
       - name: Dump steps context
         if: failure()
