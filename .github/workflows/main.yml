@@ -36,7 +36,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            Trufflehog scan found ${{steps.selftest.outputs.numWarnings}} suspicious lines in code (16 ARE EXPECTED).
+            Trufflehog scan found ${{steps.selftest.outputs.numWarnings}} suspicious lines in code ( **16 ARE EXPECTED in this self-test** ).
             These could contain secrets that were committed accidentally.
             Please review the following files :
             ```
@@ -50,7 +50,7 @@ jobs:
             ```
             </details>
       - name: fail if amount of matches is unexpected (i.e. != 16)
-        if: ${{ steps.selftest.outputs.numWarnings != 17  }}
+        if: ${{ steps.selftest.outputs.numWarnings != 16  }}
         run: exit 1
 
       - name: Dump steps context
