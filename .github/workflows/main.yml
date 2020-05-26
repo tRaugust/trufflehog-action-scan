@@ -50,7 +50,7 @@ jobs:
             ```
             </details>
       - name: fail if amount of matches is unexpected (i.e. != 16)
-        if: ${{ steps.selftest.outputs.numWarnings <> 16 }}
+        if: ${{ steps.selftest.outputs.numWarnings != 16 }}
         run: exit 1
 
       - name: Dump steps context
