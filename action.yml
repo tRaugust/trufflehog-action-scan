@@ -14,8 +14,8 @@ inputs:
 outputs:
   numWarnings:
     description: 'the number of warnings, 0 if no warnings were found'
-  warningsMarkdown:
-    description: 'the warnings rendered as Markdown'
+#  warningsMarkdown:
+#    description: 'the warnings rendered as Markdown'
   warningsText:
     description: 'the warnings rendered as plain text'
   warningsJSON:
