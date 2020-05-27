@@ -31,8 +31,8 @@ The default behavior of this action is to fail upon any finding that has not yet
 
 The action now has the following outputs.
 * `numWarnings` - the number of warnings found in this scan
-* `warningsText` - the text of the warnings as a human readable list
-* `warningsJSON` - the output as a structured JSON file  
+* `warningsText` - the text of the warnings as a human readable list (see this comment for [Example](https://github.com/tRaugust/trufflehog-actions-scan/commit/3ca6fb1e80eb05665ea42289f66f1a2820b8a846#commitcomment-39473874))
+* `warningsJSON` - the output as a structured JSON file  (see the collapsed "details" section in this comment for [Example](https://github.com/tRaugust/trufflehog-actions-scan/commit/3ca6fb1e80eb05665ea42289f66f1a2820b8a846#commitcomment-39473874)
 
 (i) You need to give an id to the step to be able to address the output variables. 
 
@@ -81,7 +81,7 @@ steps:
 
 ### more sophisticated example
 
-This example invokes the trufflehog action, posts a comment on the offending PR or push, utilizes the Output variables to output warnings -- 
+This example invokes the trufflehog action, posts a comment ([Example](https://github.com/tRaugust/trufflehog-actions-scan/commit/3ca6fb1e80eb05665ea42289f66f1a2820b8a846#commitcomment-39473874)) on the offending PR or push, utilizes the Output variables to output warnings -- 
 You need to give an id to the step to be able to address the output variables. 
 ```yaml
 name: Check For accidentally commited Secrets
