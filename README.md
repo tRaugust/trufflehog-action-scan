@@ -87,7 +87,7 @@ You need to give an id to the step to be able to address the output variables.
 name: Check For accidentally commited Secrets
 on:
   push:
-    branches: [ master, test_actions ]
+    branches: [ master ]
 jobs:
   scan-code:
     runs-on: ubuntu-latest
