@@ -1,7 +1,7 @@
 skip_strings:
   # these literals will be skipped in all files:
   /:
-    - -----BEGIN RSA PRIVATE KEY-----
+    - "-----BEGIN RSA PRIVATE KEY-----"
     - test_pwd
 
 no_regex: false
