@@ -22,7 +22,7 @@ Default trufflehog options for this tool include:
 For custom regex rules:
 
 - rules: Uses custom [regexes.json](regexes.json)
-  - Note: this is similar to the default `trufflehog` version, however this `regexes.json` will catch some additional API keys including any key Encapsulation Boundary that ends in ` PRIVATE KEY-----` or ` PRIVATE KEY BLOCK-----`.
+- Note: this is similar to the default `trufflehog` version, however this `regexes.json` will catch some additional API keys including any key Encapsulation Boundary that ends in ` PRIVATE KEY-----` or ` PRIVATE KEY BLOCK-----`.
 
 Edit your corresponding actions `yml` file or create a new one.
 
