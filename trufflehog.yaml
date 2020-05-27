@@ -1,0 +1,10 @@
+skip_strings:
+  # these literals will be skipped in all files:
+  /:
+    - -----BEGIN RSA PRIVATE KEY-----
+    - test_pwd
+
+no_regex: false
+no_entropy: false
+no_history: false
+no_current: false
