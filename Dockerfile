@@ -1,4 +1,4 @@
-FROM python:3.7-alpine
+FROM python:3.8.6-alpine
 
 LABEL name="trufflehog-actions-scan"
 LABEL version="1.1.0"
